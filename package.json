@@ -1,0 +1,57 @@
+{
+  "name": "issue-states",
+  "version": "0.1.0",
+  "description": "A GitHub App built with Probot that opens or closes issues depending on the project column they are moved to.",
+  "author": "Armin Sebastian",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/dessant/issue-states.git",
+    "type": "git"
+  },
+  "bugs": "https://github.com/dessant/issue-states/issues",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "probot run ./src/index.js",
+    "watch": "nodemon --exec 'npm start'",
+    "update": "ncu --upgrade --upgradeAll && yarn",
+    "push": "git push --follow-tags origin master",
+    "release": "standard-version && yarn run push"
+  },
+  "files": [
+    "docs",
+    "src"
+  ],
+  "dependencies": {
+    "joi": "^13.4.0",
+    "probot": "^6.2.0",
+    "probot-config": "dessant/probot-config"
+  },
+  "devDependencies": {
+    "nodemon": "1.17.5",
+    "npm-check-updates": "^2.14.2",
+    "smee-client": "^1.0.1",
+    "standard-version": "^4.4.0"
+  },
+  "engines": {
+    "node": "^8.9",
+    "npm": "^5.6"
+  },
+  "keywords": [
+    "github",
+    "issues",
+    "projects",
+    "columns",
+    "project columns",
+    "to do",
+    "in progress",
+    "done",
+    "github projects",
+    "open issues",
+    "close issues",
+    "automation",
+    "github app",
+    "probot",
+    "probot app",
+    "bot"
+  ]
+}
