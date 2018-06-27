@@ -1,12 +1,17 @@
+const uuidV4 = require('uuid/v4');
 const getMergedConfig = require('probot-config');
 
 const schema = require('./schema');
 
-module.exports = robot => {
+module.exports = async robot => {
+  const github = await robot.auth();
+  const appName = (await github.apps.get({})).data.name;
+
   robot.on(
     ['project_card.created', 'project_card.converted', 'project_card.moved'],
     async context => {
-      await processCard(context);
+      const logger = context.log.child({appName, session: uuidV4()});
+      await processCard(context, logger);
     }
   );
 
@@ -25,7 +30,7 @@ module.exports = robot => {
     return storedCards.includes(id);
   }
 
-  async function processCard(context) {
+  async function processCard(context, log) {
     const {payload, github} = context;
 
     const cardId = payload.project_card.id;
@@ -38,66 +43,56 @@ module.exports = robot => {
     if (!match) {
       return;
     }
-    const [owner, repo, issue] = match.slice(1);
-    const config = await getConfig(context, {owner, repo});
+    const [owner, repo, number] = match.slice(1);
+    const issue = {owner, repo, number};
+    const config = await getConfig(context, log, {owner, repo});
     if (!config) {
       return;
     }
+    const {openIssueColumns, closedIssueColumns, perform} = config;
 
     const {data: columnData} = await github.projects.getProjectColumn({
       column_id: payload.project_card.column_id
     });
     const columnName = columnData.name;
     let newState;
-    if (config.openIssueColumns.includes(columnName)) {
+    if (openIssueColumns.includes(columnName)) {
       newState = 'open';
     }
-    if (config.closedIssueColumns.includes(columnName)) {
+    if (closedIssueColumns.includes(columnName)) {
       newState = 'closed';
     }
     if (!newState) {
       return;
     }
 
-    const {data: issueData} = await github.issues.get({
-      owner,
-      repo,
-      number: issue
-    });
+    const {data: issueData} = await github.issues.get(issue);
     if (issueData.state === newState || issueData.pull_request) {
       return;
     }
 
-    robot.log.info(
-      {owner, repo, issue},
+    log.info(
+      {issue, cardId, perform},
       newState === 'open' ? 'Opening issue' : 'Closing issue'
     );
-    await github.issues.edit({
-      owner,
-      repo,
-      number: issue,
-      state: newState
-    });
+    if (perform) {
+      await github.issues.edit({...issue, state: newState});
+    }
 
     storeCard(cardId);
   }
 
-  async function getConfig(context, repo) {
+  async function getConfig(context, log, repo, file = 'issue-states.yml') {
     let config;
     try {
-      const repoConfig = await getMergedConfig(
-        context,
-        'issue-states.yml',
-        {},
-        repo
-      );
+      const repoConfig = await getMergedConfig(context, file, {}, repo);
       const {error, value} = schema.validate(repoConfig || {});
       if (error) {
         throw error;
       }
       config = value;
     } catch (err) {
-      robot.log.warn({err: new Error(err), ...repo}, 'Invalid config');
+      log.warn({err: new Error(err), repo, file}, 'Invalid config');
     }
 
     return config;

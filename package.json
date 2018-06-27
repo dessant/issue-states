@@ -24,7 +24,8 @@
   "dependencies": {
     "joi": "^13.4.0",
     "probot": "^6.2.0",
-    "probot-config": "dessant/probot-config"
+    "probot-config": "dessant/probot-config",
+    "uuid": "^3.3.0"
   },
   "devDependencies": {
     "nodemon": "1.17.5",

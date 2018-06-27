@@ -17,7 +17,9 @@ const schema = Joi.object().keys({
       'Close issues that are moved to these project columns. Set to `[]` to disable'
     ),
 
-  _extends: Joi.string().description('Repository to extend settings from')
+  _extends: Joi.string().description('Repository to extend settings from'),
+
+  perform: Joi.boolean().default(!process.env.DRY_RUN)
 });
 
 module.exports = schema;
