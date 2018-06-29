@@ -17,7 +17,7 @@ please consider contributing with [Patreon](https://goo.gl/qRhKSW),
 ## Usage
 
 1. **[Install the GitHub App](https://github.com/apps/issue-states)**
-   for the required repositories
+   for the intended repositories
 2. Start adding or moving issues to the project columns defined
    in `openIssueColumns` and `closedIssueColumns`
 

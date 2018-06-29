@@ -4,7 +4,7 @@ A GitHub App that opens or closes issues when they are moved to a project column
 
 ## Usage
 
-1. **[Install the GitHub App](https://github.com/apps/issue-states)** for the required repositories
+1. **[Install the GitHub App](https://github.com/apps/issue-states)** for the intended repositories
 2. Start adding or moving issues to the project columns defined in `openIssueColumns` and `closedIssueColumns`
 
 Issues which were already in the respective columns before the app was installed will not be processed. To process these issues, move them to a different column, then move them back.
