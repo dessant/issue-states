@@ -8,6 +8,7 @@ This app requires these **Permissions & events** for the GitHub App:
 - Issues - **Read & Write**
 - Organization projects - **Read-only**
   - [x] Check the box for **Project card for organization projects** events
+- Repository metadata - **Read-only**
 - Repository projects - **Read-only**
   - [x] Check the box for **Project card for repository projects** events
 - Single File - **Read-only**
