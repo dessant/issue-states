@@ -3109,6 +3109,10 @@ probot-config@dessant/probot-config:
   dependencies:
     js-yaml "^3.10.0"
 
+probot-messages@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/probot-messages/-/probot-messages-0.1.0.tgz#0a6b279486b2bb40a25e37960f7341ac40e5b0c9"
+
 probot@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/probot/-/probot-6.2.0.tgz#9c6d743dd172553db2bb687907cee11e9dc99b58"
