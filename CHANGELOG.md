@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/dessant/issue-states/compare/v0.3.0...v0.3.1) (2018-07-24)
+
+
+### Bug Fixes
+
+* pass owner and repo to sendMessage ([1a4f609](https://github.com/dessant/issue-states/commit/1a4f609))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/dessant/issue-states/compare/v0.2.0...v0.3.0) (2018-07-23)
 
