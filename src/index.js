@@ -101,7 +101,7 @@ module.exports = async robot => {
           '[{appName}] Configuration error',
           '[{appName}]({appUrl}) has encountered a configuration error in ' +
             `\`${file}\`.\n\`\`\`\n${err.toString()}\n\`\`\``,
-          {update: 'The configuration error is still occurring.'}
+          {update: 'The configuration error is still occurring.', ...repo}
         );
       }
     }
