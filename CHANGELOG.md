@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/dessant/issue-states/compare/v0.3.1...v0.3.2) (2018-10-03)
+
+
+### Bug Fixes
+
+* allow newer versions of node ([7e34e45](https://github.com/dessant/issue-states/commit/7e34e45))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/dessant/issue-states/compare/v0.3.0...v0.3.1) (2018-07-24)
 
