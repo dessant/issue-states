@@ -1,6 +1,7 @@
 # Issue States
 
-[![npm](https://img.shields.io/npm/v/issue-states.svg?style=flat-square&colorB=007EC6)](https://www.npmjs.com/package/issue-states)
+[![Build Status](https://img.shields.io/travis/com/dessant/issue-states/master.svg)](https://travis-ci.com/dessant/issue-states)
+[![Version](https://img.shields.io/npm/v/issue-states.svg?colorB=007EC6)](https://www.npmjs.com/package/issue-states)
 
 Issue States is a GitHub App built with [Probot](https://github.com/probot/probot)
 that opens or closes issues when they are moved to a project column.
