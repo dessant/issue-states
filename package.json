@@ -24,14 +24,14 @@
   "dependencies": {
     "joi": "^14.3.1",
     "probot": "^7.5.0",
-    "probot-config": "dessant/probot-config#3e169d2a30116c95a8e6116ffa5734161e2fe777",
+    "probot-config": "dessant/probot-config#8097468e816af64a947cca23daaa33fbb0a25d70",
     "probot-messages": "^0.1.2",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
     "nodemon": "1.18.9",
     "npm-check-updates": "^2.15.0",
-    "prettier": "^1.15.3",
+    "prettier": "^1.16.0",
     "smee-client": "^1.0.2",
     "standard-version": "^4.4.0"
   },
