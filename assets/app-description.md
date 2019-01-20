@@ -11,12 +11,14 @@ Issues which were already in the respective columns before the app was installed
 
 Care must be taken during the use of the app to not conflict with project automation presets on GitHub.
 
+⚠️ **If possible, install the app only for select repositories. Do not leave the `All repositories` option selected, unless you intend to use the app for all current and future repositories.**
+
 #### Configuration
 
-Optionally, create `.github/issue-states.yml` in the default branch of the repository to override any of these default settings:
+Optionally, create `.github/issue-states.yml` in the default branch of the repository or add it at the same file path to a special repository named `.github` to override any of these default settings:
 
 ```yaml
-# Configuration for issue-states - https://github.com/dessant/issue-states
+# Configuration for Issue States - https://github.com/dessant/issue-states
 
 # Open issues that are moved to these project columns. Set to `[]` to disable
 openIssueColumns: []
@@ -32,4 +34,4 @@ closedIssueColumns:
 
 ## Supporting the Project
 
-The continued development of Issue States is made possible thanks to the support of awesome backers. If you'd like to join them, please consider contributing with [Patreon](https://goo.gl/qRhKSW), [PayPal](https://goo.gl/5FnBaw) or [Bitcoin](https://goo.gl/uJUAaU).
+The continued development of Issue States is made possible thanks to the support of awesome backers. If you'd like to join them, please consider contributing with [Patreon](https://www.patreon.com/dessant), [PayPal](https://www.paypal.me/ArminSebastian) or [Bitcoin](https://goo.gl/uJUAaU).
