@@ -36,7 +36,7 @@ to use the app for all current and future repositories.**
 #### Configuration
 
 Optionally, create `.github/issue-states.yml` in the default branch
-of the repository or add it at the same file path to a special repository
+of the repository or add it at the same file path to a repository
 named `.github` to override any of these default settings:
 
 ```yaml
