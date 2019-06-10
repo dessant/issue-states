@@ -6,7 +6,7 @@ const schema = require('./schema');
 
 module.exports = async robot => {
   const github = await robot.auth();
-  const appName = (await github.apps.get({})).data.name;
+  const appName = (await github.apps.getAuthenticated()).data.name;
 
   robot.on(
     ['project_card.created', 'project_card.converted', 'project_card.moved'],
@@ -44,15 +44,15 @@ module.exports = async robot => {
     if (!match) {
       return;
     }
-    const [owner, repo, number] = match.slice(1);
-    const issue = {owner, repo, number};
+    const [owner, repo, issue_number] = match.slice(1);
+    const issue = {owner, repo, issue_number};
     const config = await getConfig(context, log, {owner, repo});
     if (!config) {
       return;
     }
     const {openIssueColumns, closedIssueColumns, perform} = config;
 
-    const {data: columnData} = await github.projects.getProjectColumn({
+    const {data: columnData} = await github.projects.getColumn({
       column_id: payload.project_card.column_id
     });
     const columnName = columnData.name;
@@ -77,7 +77,7 @@ module.exports = async robot => {
       newState === 'open' ? 'Opening issue' : 'Closing issue'
     );
     if (perform) {
-      await github.issues.edit({...issue, state: newState});
+      await github.issues.update({...issue, state: newState});
     }
 
     storeCard(cardId);
