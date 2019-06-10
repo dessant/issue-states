@@ -12,8 +12,10 @@ that opens or closes issues when they are moved to a project column.
 
 The continued development of Issue States is made possible
 thanks to the support of awesome backers. If you'd like to join them,
-please consider contributing with [Patreon](https://www.patreon.com/dessant),
-[PayPal](https://www.paypal.me/ArminSebastian) or [Bitcoin](https://goo.gl/uJUAaU).
+please consider contributing with
+[Patreon](https://armin.dev/go/patreon?pr=issue-states&src=repo),
+[PayPal](https://armin.dev/go/paypal?pr=issue-states&src=repo) or
+[Bitcoin](https://armin.dev/go/bitcoin?pr=issue-states&src=repo).
 
 ## Usage
 
@@ -29,7 +31,7 @@ then move them back.
 Care must be taken during the use of the app to not conflict with project
 automation presets on GitHub.
 
-⚠️ **If possible, install the app only for select repositories.
+**If possible, install the app only for select repositories.
 Do not leave the `All repositories` option selected, unless you intend
 to use the app for all current and future repositories.**
 
