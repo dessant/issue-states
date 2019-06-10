@@ -15,7 +15,7 @@ Issues which were already in the respective columns before the app was installed
 
 Care must be taken during the use of the app to not conflict with project automation presets on GitHub.
 
-⚠️ **If possible, install the app only for select repositories. Do not leave the `All repositories` option selected, unless you intend to use the app for all current and future repositories.**
+**If possible, install the app only for select repositories. Do not leave the `All repositories` option selected, unless you intend to use the app for all current and future repositories.**
 
 #### Configuration
 
