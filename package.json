@@ -1,6 +1,6 @@
 {
   "name": "issue-states",
-  "version": "0.3.4",
+  "version": "1.0.0",
   "description": "A GitHub App built with Probot that opens or closes issues when they are moved to a project column.",
   "author": "Armin Sebastian",
   "license": "MIT",
