@@ -1,12 +1,20 @@
-language: node_js
-
-cache: yarn
-
-script: ""
+jobs:
+  fast_finish: true
+  include:
+    - stage: build
+      install: docker build --tag ci .ci
+      script: docker run --init --rm --mount type=bind,source="${PWD}",target=/app ci
+      os: linux
+      dist: xenial
+      language: generic
+      services:
+        - docker
 
 deploy:
   - provider: npm
     email: $NPM_EMAIL
-    api_key: $NPM_TOKEN
+    api_key:
+      secure: "fw3L8UBYjM+ZsPW3joYHTDlSHqHcKhwmNMwYyGELtYEdjkee49myPX4VyIyYcxNYft914CfMkWp765B98VRl43bxeogtglaCnjLqYyd9eDiB/qH7JuDKE4/4h2S9htFr4Z+CjzFN0DU6OB33HXE1Jk7DbnSBgSIPZX/WNuoc4D+bpYenQNLl7kSeMXYzcuQEfzFLLpYKuWbnzNfxDLpGbPaSOjql5xHgef9YxFsQXCSsa8PHNyEyFxGotgOlRal4PX0rZ1ZDL9RwNjaiV9PZRbqdwyfVq5jgXvpvywJxNBCnocbGhoh+Uareq5LoAAuJqW+F6bXb8uM0L0cE8AygwnV7AXYx3ablNov5N/FY35MW9Jo8hl2DPkXUEnEie8fGr+4PFTUZoEf5UevIUBc5LnFetgtGWdoWd+ka5aY5RNr+/uW0JI/Axs57GwtQllOHHd8DK9cI31ZPOXgT2EVH2j7xAnddEv0f68ljIWhWWgDfINGP8qPVrHYN9s/3EzlonVSKGfqG0lTbuZkDgLbO6rChwHFx1ZVZrX5rgCh2G7w3n+JTMomKYHzegEUw1+R9/goydgXZjd2C3a68v80VRGpgi1bjskIsg0VJkLPqRFq9ff/iO6ygr3PsHb/IieDF/+k8Btx7YXYhfR+YdNnTyLEHYxj4k8DaE1yaUeRCnoM="
+    skip_cleanup: true
     on:
       tags: true
