@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 
 const schema = Joi.object().keys({
   openIssueColumns: Joi.array()

@@ -1,5 +1,4 @@
 const uuidV4 = require('uuid/v4');
-const getMergedConfig = require('probot-config');
 const sendMessage = require('probot-messages');
 
 const schema = require('./schema');
@@ -86,7 +85,9 @@ module.exports = async robot => {
   async function getConfig(context, log, repo, file = 'issue-states.yml') {
     let config;
     try {
-      const repoConfig = await getMergedConfig(context, file, {}, repo);
+      // Organization level project card events are not associated with a repo
+      context.repo = params => Object.assign({}, repo, params);
+      const repoConfig = await context.config(file);
       const {error, value} = schema.validate(repoConfig || {});
       if (error) {
         throw error;
