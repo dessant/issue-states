@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/dessant/issue-states/compare/v1.0.0...v1.0.1) (2019-10-25)
+
+
+### Bug Fixes
+
+* update dependencies ([d27ab6d](https://github.com/dessant/issue-states/commit/d27ab6d6bab4b3f90cc56c4abf422d8ac684ba63))
+
 ## [1.0.0](https://github.com/dessant/issue-states/compare/v0.3.4...v1.0.0) (2019-06-10)
 
 
