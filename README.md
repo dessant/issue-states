@@ -1,10 +1,10 @@
 # Issue States
 
-[![Build Status](https://img.shields.io/travis/com/dessant/issue-states/master.svg)](https://travis-ci.com/dessant/issue-states)
-[![Version](https://img.shields.io/npm/v/issue-states.svg?colorB=007EC6)](https://www.npmjs.com/package/issue-states)
+Issue States is a GitHub Action that closes or reopens issues
+when they are moved to a project column.
 
-Issue States is a GitHub App built with [Probot](https://github.com/probot/probot)
-that opens or closes issues when they are moved to a project column.
+> The legacy version of this project can be found
+[here](https://github.com/dessant/issue-states-app).
 
 ![](assets/screenshot.png)
 
@@ -19,51 +19,90 @@ please consider contributing with
 
 ## Usage
 
-1. **[Install the GitHub App](https://github.com/apps/issue-states)**
-   for the intended repositories
-2. Start adding or moving issues to the project columns defined
-   in `openIssueColumns` and `closedIssueColumns`
+1. Create the `.github/workflows/issue-states.yml` workflow file,
+   use one of the [example workflows](#examples) to get started
+2. Start adding or moving issues to the project columns declared
+   in `open-issue-columns` and `closed-issue-columns`
 
-Issues which were already in the respective columns before the app was installed
-will not be processed. To process these issues, move them to a different column,
-then move them back.
+Issues which were already in the respective columns before the action
+was set up will not be processed. To process these issues,
+move them to a different column, then move them back.
 
-Care must be taken during the use of the app to not conflict with project
-automation presets on GitHub.
+Care must be taken during the use of the action to not conflict
+with project automation presets on GitHub.
 
-**If possible, install the app only for select repositories.
-Do not leave the `All repositories` option selected, unless you intend
-to use the app for all current and future repositories.**
+### Inputs
 
-#### Configuration
+The action can be configured using [input parameters](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepswith).
+All parameters are optional, except `github-token`.
 
-Optionally, create `.github/issue-states.yml` in the default branch
-of the repository or add it at the same file path to a repository
-named `.github` to override any of these default settings:
+- **`github-token`**
+  - GitHub access token, value must be `${{ github.token }}`
+  - Required
+- **`open-issue-columns`**
+  - Reopen issues that are moved to these project columns, value must be
+    a comma separated list of project columns
+  - Optional, defaults to `''`
+- **`closed-issue-columns`**
+  - Close issues that are moved to these project columns, value must be
+    a comma separated list of project columns
+  - Optional, defaults to `Closed, Done`
+
+### Outputs
+
+- **`issues`**
+  - Issues that have been either closed or reopened, value is a JSON string
+    in the form of `[{"owner": "actions", "repo": "toolkit", "issue_number": 1,
+    "state": "closed"}]`, value of `state` is either `open` or `closed`
+
+## Examples
+
+The following workflow will close issues when they are moved
+to the `Closed` or `Done` project column.
 
 ```yaml
-# Configuration for Issue States - https://github.com/dessant/issue-states
+name: 'Set issue state'
 
-# Open issues that are moved to these project columns. Set to `[]` to disable
-openIssueColumns: []
+on:
+  project_card:
+    types: [created, edited, moved]
 
-# Close issues that are moved to these project columns. Set to `[]` to disable
-closedIssueColumns:
-  - Closed
-  - Done
-
-# Repository to extend settings from
-# _extends: repo
+jobs:
+  set-state:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dessant/issue-states@v2
+        with:
+          github-token: ${{ github.token }}
 ```
 
-## Deployment
+### Available input parameters
 
-See [docs/deploy.md](docs/deploy.md) if you would like to run your own
-instance of this app.
+This workflow declares all the available input parameters of the action
+and their default values. Any of the parameters can be omitted,
+except `github-token`.
+
+```yaml
+name: 'Set issue state'
+
+on:
+  project_card:
+    types: [created, edited, moved]
+
+jobs:
+  set-state:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dessant/issue-states@v2
+        with:
+          github-token: ${{ github.token }}
+          open-issue-columns: ''
+          closed-issue-columns: 'Closed, Done'
+```
 
 ## License
 
-Copyright (c) 2018-2019 Armin Sebastian
+Copyright (c) 2018-2021 Armin Sebastian
 
 This software is released under the terms of the MIT License.
 See the [LICENSE](LICENSE) file for further information.

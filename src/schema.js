@@ -1,36 +1,50 @@
-const Joi = require('@hapi/joi');
+const Joi = require('joi');
 
-const schema = Joi.object().keys({
-  openIssueColumns: Joi.array()
-    .single()
-    .items(
-      Joi.string()
-        .trim()
-        .max(140)
+const extendedJoi = Joi.extend({
+  type: 'stringList',
+  base: Joi.array(),
+  coerce: {
+    from: 'string',
+    method(value) {
+      value = value.trim();
+      if (value) {
+        value = value
+          .split(',')
+          .map(item => item.trim())
+          .filter(Boolean);
+      }
+
+      return {value};
+    }
+  }
+});
+
+const schema = Joi.object({
+  'github-token': Joi.string().trim().max(100),
+
+  'open-issue-columns': Joi.alternatives()
+    .try(
+      extendedJoi
+        .stringList()
+        .items(Joi.string().trim().max(140))
+        .min(1)
+        .max(30)
+        .unique(),
+      Joi.string().trim().valid('')
     )
-    .default([])
-    .description(
-      'Open issues that are moved to these project columns. Set to `[]` to disable'
-    ),
+    .default(''),
 
-  closedIssueColumns: Joi.array()
-    .single()
-    .items(
-      Joi.string()
-        .trim()
-        .max(140)
+  'closed-issue-columns': Joi.alternatives()
+    .try(
+      extendedJoi
+        .stringList()
+        .items(Joi.string().trim().max(140))
+        .min(1)
+        .max(30)
+        .unique(),
+      Joi.string().trim().valid('')
     )
-    .default(['Closed', 'Done'])
-    .description(
-      'Close issues that are moved to these project columns. Set to `[]` to disable'
-    ),
-
-  _extends: Joi.string()
-    .trim()
-    .max(260)
-    .description('Repository to extend settings from'),
-
-  perform: Joi.boolean().default(!process.env.DRY_RUN)
+    .default('Closed, Done')
 });
 
 module.exports = schema;
