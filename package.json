@@ -1,6 +1,6 @@
 {
   "name": "issue-states",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "A GitHub Action that closes or reopens issues when they are moved to a project column.",
   "author": "Armin Sebastian",
   "license": "MIT",
