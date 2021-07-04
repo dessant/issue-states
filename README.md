@@ -36,6 +36,7 @@ with project automation presets on GitHub.
 The action can be configured using [input parameters](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepswith).
 All parameters are optional, except `github-token`.
 
+<!-- prettier-ignore -->
 - **`github-token`**
   - GitHub access token, value must be `${{ github.token }}`
   - Required
@@ -50,6 +51,7 @@ All parameters are optional, except `github-token`.
 
 ### Outputs
 
+<!-- prettier-ignore -->
 - **`issues`**
   - Issues that have been either closed or reopened, value is a JSON string
     in the form of `[{"owner": "actions", "repo": "toolkit", "issue_number": 1,
@@ -60,6 +62,7 @@ All parameters are optional, except `github-token`.
 The following workflow will close issues when they are moved
 to the `Closed` or `Done` project column.
 
+<!-- prettier-ignore -->
 ```yaml
 name: 'Set issue state'
 
@@ -67,8 +70,13 @@ on:
   project_card:
     types: [created, edited, moved]
 
+permissions:
+  repository-projects: read
+  issues: write
+  pull-requests: write
+
 jobs:
-  set-state:
+  action:
     runs-on: ubuntu-latest
     steps:
       - uses: dessant/issue-states@v2
@@ -82,6 +90,7 @@ This workflow declares all the available input parameters of the action
 and their default values. Any of the parameters can be omitted,
 except `github-token`.
 
+<!-- prettier-ignore -->
 ```yaml
 name: 'Set issue state'
 
@@ -89,8 +98,13 @@ on:
   project_card:
     types: [created, edited, moved]
 
+permissions:
+  repository-projects: read
+  issues: write
+  pull-requests: write
+
 jobs:
-  set-state:
+  action:
     runs-on: ubuntu-latest
     steps:
       - uses: dessant/issue-states@v2
