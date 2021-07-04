@@ -3,9 +3,6 @@
 Issue States is a GitHub Action that closes or reopens issues
 when they are moved to a project column.
 
-> The legacy version of this project can be found
-[here](https://github.com/dessant/issue-states-app).
-
 ![](assets/screenshot.png)
 
 ## Supporting the Project
@@ -33,13 +30,14 @@ with project automation presets on GitHub.
 
 ### Inputs
 
-The action can be configured using [input parameters](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepswith).
+The action can be configured using [input parameters](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepswith).
 All parameters are optional, except `github-token`.
 
 <!-- prettier-ignore -->
 - **`github-token`**
-  - GitHub access token, value must be `${{ github.token }}`
-  - Required
+  - GitHub access token, value must be `${{ github.token }}` or an encrypted
+    secret that contains a [personal access token](#using-a-personal-access-token)
+  - Optional, defaults to `${{ github.token }}`
 - **`open-issue-columns`**
   - Reopen issues that are moved to these project columns, value must be
     a comma separated list of project columns
@@ -64,7 +62,7 @@ to the `Closed` or `Done` project column.
 
 <!-- prettier-ignore -->
 ```yaml
-name: 'Set issue state'
+name: 'Issue States'
 
 on:
   project_card:
@@ -80,8 +78,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: dessant/issue-states@v2
-        with:
-          github-token: ${{ github.token }}
 ```
 
 ### Available input parameters
@@ -92,7 +88,7 @@ except `github-token`.
 
 <!-- prettier-ignore -->
 ```yaml
-name: 'Set issue state'
+name: 'Issue States'
 
 on:
   project_card:
@@ -112,6 +108,26 @@ jobs:
           github-token: ${{ github.token }}
           open-issue-columns: ''
           closed-issue-columns: 'Closed, Done'
+```
+
+### Using a personal access token
+
+The action uses an installation access token by default to interact with GitHub.
+You may also authenticate with a personal access token to perform actions
+as a GitHub user instead of the `github-actions` app.
+
+Create a [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+with the `repo` or `public_repo` scopes enabled, and add the token as an
+[encrypted secret](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
+for the repository or organization, then provide the action with the secret
+using the `github-token` input parameter.
+
+<!-- prettier-ignore -->
+```yaml
+    steps:
+      - uses: dessant/label-actions@v2
+        with:
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 ```
 
 ## License
