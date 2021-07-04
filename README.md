@@ -31,7 +31,6 @@ with project automation presets on GitHub.
 ### Inputs
 
 The action can be configured using [input parameters](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepswith).
-All parameters are optional, except `github-token`.
 
 <!-- prettier-ignore -->
 - **`github-token`**
@@ -83,8 +82,7 @@ jobs:
 ### Available input parameters
 
 This workflow declares all the available input parameters of the action
-and their default values. Any of the parameters can be omitted,
-except `github-token`.
+and their default values. Any of the parameters can be omitted.
 
 <!-- prettier-ignore -->
 ```yaml
@@ -125,7 +123,7 @@ using the `github-token` input parameter.
 <!-- prettier-ignore -->
 ```yaml
     steps:
-      - uses: dessant/label-actions@v2
+      - uses: dessant/issue-states@v2
         with:
           github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 ```
