@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/dessant/issue-states/compare/v2.0.0...v2.1.0) (2021-07-09)
+
+
+### Features
+
+* make github-token optional and document the use of personal access tokens ([453ac36](https://github.com/dessant/issue-states/commit/453ac3617d92732e1a800f1a010300d750c6dbc0))
+
+
+### Bug Fixes
+
+* declare required permissions ([5721b51](https://github.com/dessant/issue-states/commit/5721b514c82e1be6db9cfa42cfa8dbee1dce5dba))
+
 ## [2.0.0](https://github.com/dessant/issue-states/compare/v1.0.1...v2.0.0) (2021-01-21)
 
 
