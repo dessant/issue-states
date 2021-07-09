@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/dessant/issue-states/compare/v2.1.0...v2.1.1) (2021-07-09)
+
+
+### Bug Fixes
+
+* update GitHub API calls ([b14c1e5](https://github.com/dessant/issue-states/commit/b14c1e53f4bc45f94ba2ff6d9115d0c8bfa85b46))
+
 ## [2.1.0](https://github.com/dessant/issue-states/compare/v2.0.0...v2.1.0) (2021-07-09)
 
 
