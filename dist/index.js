@@ -24407,7 +24407,7 @@ class App {
 
     const {
       data: {name: columnName}
-    } = await this.client.projects.getColumn({
+    } = await this.client.rest.projects.getColumn({
       column_id: payload.project_card.column_id
     });
 
@@ -24421,13 +24421,13 @@ class App {
       return;
     }
 
-    const {data: issueData} = await this.client.issues.get(issue);
+    const {data: issueData} = await this.client.rest.issues.get(issue);
     if (issueData.state === newState || issueData.pull_request) {
       return;
     }
 
     core.debug('Updating issue state');
-    await this.client.issues.update({...issue, state: newState});
+    await this.client.rest.issues.update({...issue, state: newState});
 
     return [{...issue, state: newState}];
   }
