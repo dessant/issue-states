@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/dessant/issue-states/compare/v2.1.1...v2.2.0) (2021-10-03)
+
+
+### Features
+
+* add option for logging output parameters ([54551cb](https://github.com/dessant/issue-states/commit/54551cb00c04d17949509251854b8e1d628c0124))
+
 ### [2.1.1](https://github.com/dessant/issue-states/compare/v2.1.0...v2.1.1) (2021-07-09)
 
 
