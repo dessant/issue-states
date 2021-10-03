@@ -1,22 +1,24 @@
 const Joi = require('joi');
 
-const extendedJoi = Joi.extend({
-  type: 'stringList',
-  base: Joi.array(),
-  coerce: {
-    from: 'string',
-    method(value) {
-      value = value.trim();
-      if (value) {
-        value = value
-          .split(',')
-          .map(item => item.trim())
-          .filter(Boolean);
-      }
+const extendedJoi = Joi.extend(joi => {
+  return {
+    type: 'stringList',
+    base: joi.array(),
+    coerce: {
+      from: 'string',
+      method(value) {
+        value = value.trim();
+        if (value) {
+          value = value
+            .split(',')
+            .map(item => item.trim())
+            .filter(Boolean);
+        }
 
-      return {value};
+        return {value};
+      }
     }
-  }
+  };
 });
 
 const schema = Joi.object({
@@ -44,7 +46,9 @@ const schema = Joi.object({
         .unique(),
       Joi.string().trim().valid('')
     )
-    .default('Closed, Done')
+    .default('Closed, Done'),
+
+  'log-output': Joi.boolean().default(false)
 });
 
 module.exports = schema;

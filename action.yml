@@ -11,6 +11,9 @@ inputs:
   closed-issue-columns:
     description: 'Close issues that are moved to these project columns, value must be a comma separated list of project columns'
     default: 'Closed, Done'
+  log-output:
+    description: 'Log output parameters, value must be either `true` or `false`'
+    default: false
 outputs:
   issues:
     description: 'Issues that have been either closed or reopened, value is a JSON string'

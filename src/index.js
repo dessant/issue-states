@@ -12,9 +12,16 @@ async function run() {
 
     const output = await app.processCard();
 
+    core.debug('Setting output (issues)');
     if (output) {
-      core.debug('Setting output (issues)');
       core.setOutput('issues', JSON.stringify(output));
+
+      if (config['log-output']) {
+        core.info('Output (issues):');
+        core.info(JSON.stringify(output, null, 2));
+      }
+    } else {
+      core.setOutput('issues', '');
     }
   } catch (err) {
     core.setFailed(err);

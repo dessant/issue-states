@@ -16,8 +16,8 @@ please consider contributing with
 
 ## Usage
 
-1. Create the `.github/workflows/issue-states.yml` workflow file,
-   use one of the [example workflows](#examples) to get started
+1. Create the `issue-states.yml` workflow file in the `.github/workflows`
+   directory, use one of the [example workflows](#examples) to get started
 2. Start adding or moving issues to the project columns declared
    in `open-issue-columns` and `closed-issue-columns`
 
@@ -45,6 +45,9 @@ The action can be configured using [input parameters](https://docs.github.com/en
   - Close issues that are moved to these project columns, value must be
     a comma separated list of project columns
   - Optional, defaults to `Closed, Done`
+- **`log-output`**
+  - Log output parameters, value must be either `true` or `false`
+  - Optional, defaults to `false`
 
 ### Outputs
 
@@ -53,6 +56,7 @@ The action can be configured using [input parameters](https://docs.github.com/en
   - Issues that have been either closed or reopened, value is a JSON string
     in the form of `[{"owner": "actions", "repo": "toolkit", "issue_number": 1,
     "state": "closed"}]`, value of `state` is either `open` or `closed`
+  - Defaults to `''`
 
 ## Examples
 
@@ -106,6 +110,7 @@ jobs:
           github-token: ${{ github.token }}
           open-issue-columns: ''
           closed-issue-columns: 'Closed, Done'
+          log-output: false
 ```
 
 ### Using a personal access token
