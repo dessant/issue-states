@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/dessant/issue-states/compare/v2.2.0...v3.0.0) (2022-12-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* the action now requires Node.js 16
+
+### Bug Fixes
+
+* update dependencies ([fcdd3b4](https://github.com/dessant/issue-states/commit/fcdd3b4fdb9a29ed97af9fe8c87d4120d65d6f8e))
+* update docs ([52df266](https://github.com/dessant/issue-states/commit/52df2667583607628dd132efe0f67463dda4cbc3))
+
 ## [2.2.0](https://github.com/dessant/issue-states/compare/v2.1.1...v2.2.0) (2021-10-03)
 
 
