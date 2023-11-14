@@ -1,5 +1,7 @@
 # Issue States
 
+> :warning: The action does not work with modern projects: https://github.com/dessant/issue-states/issues/2
+
 Issue States is a GitHub Action that closes or reopens issues
 when they are moved to a project column.
 
