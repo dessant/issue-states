@@ -1,20 +1,13 @@
 # Issue States
 
+> This project is no longer maintained.
+
 > :warning: The action does not work with modern projects: https://github.com/dessant/issue-states/issues/2
 
 Issue States is a GitHub Action that closes or reopens issues
 when they are moved to a project column.
 
 ![](assets/screenshot.png)
-
-## Supporting the Project
-
-The continued development of Issue States is made possible
-thanks to the support of awesome backers. If you'd like to join them,
-please consider contributing with
-[Patreon](https://armin.dev/go/patreon?pr=issue-states&src=repo),
-[PayPal](https://armin.dev/go/paypal?pr=issue-states&src=repo) or
-[Bitcoin](https://armin.dev/go/bitcoin?pr=issue-states&src=repo).
 
 ## Usage
 
@@ -137,7 +130,7 @@ using the `github-token` input parameter.
 
 ## License
 
-Copyright (c) 2018-2023 Armin Sebastian
+Copyright (c) 2018-2026 Armin Sebastian
 
 This software is released under the terms of the MIT License.
 See the [LICENSE](LICENSE) file for further information.
